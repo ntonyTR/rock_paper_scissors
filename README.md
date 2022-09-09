@@ -11,6 +11,7 @@ PSEUDOCODE
 - Determine who wins
 - Alert the result ('you won!')
 - Keep a score on the wins/lose.
+___
 
 The `getUserChoice()` function asks the user to write 'Rock', 'Paper', or 'Scissors', then capitalizes the input of the user by converting the first letter to upper case and the rest to lower case, after this, returns this value and stores iti into the  `userChoice` variable, declared in global scope.
 
