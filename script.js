@@ -1,62 +1,102 @@
-let userChoice;
-let computerChoice;
+let playerChoice;
+let compChoice;
 let roundResult;
-let userScore = 0;
-let compuScore = 0;
-let drawsScore = 0;
+let score = 0;
 
 game();
 
-function getUserChoice() {
-    userChoice = prompt('Rock, Paper, Scissors');
-    userChoice = userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
-    return userChoice;
-}
-
 function getCompChoice() {
-    const randomNum = Math.floor((Math.random()* 3));
-    computerChoice = (randomNum === 0) ? 'Rock' : (randomNum === 1) ? 'Paper' : 'Scissors';
-    return computerChoice;
+  const randomNum = Math.floor(Math.random() * 3);
+  compChoice =
+    randomNum === 0 ? "Rock" : randomNum === 1 ? "Paper" : "Scissors";
+  return compChoice;
 }
 
-function playRound(player, computer) {
-    if (player === computer){
-        roundResult = `${player} is equal to ${computer}, is a tie!`;
-        drawsScore++;
-    } else if (player === 'Rock' && computer === 'Scissors' || player === 'Paper' && computer === 'Rock' || player === 'Scissors' && computer === 'Paper') {
-        roundResult = `${player} beats ${computer}, you won!`;
-        userScore++;
-    } else if (player === 'Rock' && computer === 'Paper' || player === 'Paper' && computer === 'Scissors' || player === 'Scissors' && computer === 'Rock') {
-        roundResult = `${computer} beats ${player}, you lost!`;
-        compuScore++;
-    } else {
-        alert(`Invalid value`);
-        roundResult = `Invalid value`;
-        compuScore++;
-    }
-    console.log(`User choice: ${player}\n\nComputer choice: ${computer}\n\n${roundResult}`);
-    alert(`User choice: ${player}\n\nComputer choice: ${computer}\n\n${roundResult}`);
-    return roundResult;
+function getPlayerChoice() {
+  playerChoice = prompt("Pick: Rock, Paper, Scissors");
+  playerChoice =
+    playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
+  return playerChoice;
+}
+
+function compareChoices(player, computer) {
+  switch (true) {
+    case player === computer:
+      roundResult = "tie";
+      return roundResult;
+
+    case (player === "Rock" && computer === "Scissors") ||
+      (player === "Paper" && computer === "Rock") ||
+      (player === "Scissors" && computer === "Paper"):
+      roundResult = "win";
+      score++;
+      return roundResult;
+
+    case (player === "Rock" && computer === "Paper") ||
+      (player === "Paper" && computer === "Scissors") ||
+      (player === "Scissors" && computer === "Rock"):
+      roundResult = "lose";
+      return roundResult;
+
+    default:
+      roundResult = "invalid";
+      return roundResult;
+  }
+}
+
+function alerts() {
+  switch (true) {
+    case roundResult == "tie":
+      console.log(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${playerChoice} is equal to ${compChoice}, is a tie!`
+      );
+      alert(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${playerChoice} is equal to ${compChoice}, is a tie!`
+      );
+      break;
+
+    case roundResult == "win":
+      console.log(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${playerChoice} beats ${compChoice}, you won!`
+      );
+      alert(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${playerChoice} beats ${compChoice}, you won!`
+      );
+      break;
+
+    case roundResult == "lose":
+      console.log(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${compChoice} beats ${playerChoice}, you lose!`
+      );
+      alert(
+        `User: ${playerChoice}\n\nComputer: ${compChoice}\n\n${compChoice} beats ${playerChoice}, you lose!`
+      );
+      break;
+
+    default:
+      console.log(`${playerChoice} is an invalid value, you lost!`);
+      alert(`${playerChoice} is an invalid value, you lost!`);
+  }
+  console.log(`User Win Score: ${score}`);
+  alert(`User Win Score: ${score}`);
+}
+
+function finalResult() {
+  if (score >= 3) {
+    console.log(`You won ${score} out of 5!\n\nYou win!!!! :D`);
+    alert(`You won ${score} out of 5!\n\nYou win!!!! :D`);
+  } else {
+    console.log(`You won ${score} out of 5!\n\nYou lose :(`);
+    alert(`You won ${score} out of 5!\n\nYou lose :(`);
+  }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        getUserChoice();
-        getCompChoice();
-        playRound(userChoice, computerChoice);
-    }
-
-    console.log(`User Score: ${userScore}\nComputer Score ${compuScore}\n`);
-    alert(`User Score: ${userScore}\nComputer Score ${compuScore}\n`);
-
-    if (userScore > compuScore) {
-        console.log(`You win!!!! :D`);
-        alert(`You win!!!! :D`);
-    } else if (userScore < compuScore) {
-        console.log(`You lose :(`);
-        alert(`You lose :(`);
-    } else {
-        console.log(`Is a draw :/`);
-        alert(`Is a draw :/`);
-    }
+  for (let i = 0; i < 5; i++) {
+    getPlayerChoice();
+    getCompChoice();
+    compareChoices(playerChoice, compChoice);
+    alerts();
+  }
+  finalResult();
 }
