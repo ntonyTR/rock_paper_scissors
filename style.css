@@ -5,3 +5,7 @@
 h1 {
     text-align: center;
 }
+
+#buttonsContainer {
+    border: 2px solid black;    
+}
