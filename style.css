@@ -1,11 +1,36 @@
 * {
-    background-color: darkolivegreen;
+    background-color: rgb(56, 104, 104);
 }
 
 h1 {
     text-align: center;
+    border: 2px solid black;
+}
+
+.container {
+    display: flex;
 }
 
 #buttonsContainer {
-    border: 2px solid black;    
+    text-align: center;
+    border: 2px solid blue;
+}
+
+.scoreBoard {
+    border: 2px solid green;
+}
+
+#resultMessage {
+    font-size: large;
+}
+
+button {
+    font-size: 64px;
+    background-color: blue;
+}
+
+.scoreBoard {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
 }

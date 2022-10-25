@@ -1,7 +1,11 @@
 let playerChoice;
 let compChoice;
 let roundResult;
+let resultMessage;
 const buttons = document.querySelectorAll("button");
+const buttonsContainer = document.querySelector("#buttonsContainer");
+const message = document.createElement("p");
+let score = document.querySelector(".scoreRecord");
 
 getUserChoice();
 
@@ -13,17 +17,21 @@ function getUserChoice() {
     });
   });
 }
+
 function playRound() {
   getCompChoice();
   makeComparison(playerChoice, compChoice);
   alerts();
+  showResult();
 }
+
 function getCompChoice() {
   const randomNum = Math.floor(Math.random() * 3);
   compChoice =
     randomNum === 0 ? "Rock" : randomNum === 1 ? "Paper" : "Scissors";
   return compChoice;
 }
+
 function makeComparison(player, computer) {
   switch (true) {
     case player == computer:
@@ -43,29 +51,28 @@ function makeComparison(player, computer) {
       return (roundResult = "invalid");
   }
 }
+
 function alerts() {
-  switch (true) {
-    case roundResult == "tie":
-      alert(
-        `You chose ${playerChoice}, computer chose ${compChoice}, is a tie!`
-      );
-      break;
-
-    case roundResult == "win":
-      alert(
-        `You chose ${playerChoice}, computer chose ${compChoice}, you won!`
-      );
-      break;
-
-    case roundResult == "lose":
-      alert(
-        `You chose ${playerChoice}, computer chose ${compChoice}, you lose!`
-      );
-      break;
-
-    case roundResult == "invalid":
-      alert(`That is an invalid option!`);
-  }
+  resultMessage =
+    roundResult === "tie"
+      ? `Is a tie!`
+      : roundResult === "win"
+      ? `You win!`
+      : roundResult === "lose"
+      ? `You lose!`
+      : `Invalid option`;
 }
 
-// code by Antony TR - Oct. 20, 2022
+function showResult() {
+  message.textContent = resultMessage;
+  buttonsContainer.appendChild(message);
+}
+
+// code by Antony TR
+let scoreBtn = document.getElementById("scoreButton");
+function updateScore() {
+  // implementar if/else, para cuando gane player o computadora
+  score++;
+  document.querySelector("#scoreRecord").textContent = score;
+}
+scoreBtn.addEventListener("click", updateScore);
