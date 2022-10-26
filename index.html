@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
 </head>
 <body>
-    <h1>ROCK, PAPER, SCISSORS!</h1>
-    <div class="container">
-        <div id="buttonsContainer">
-            <button id="Rock">Rock</button>
-            <button id="Paper">Paper</button>
-            <button id="Scissors">Scissors</button>
-        </div>
-        
-        <div class="scoreBoard">
-            <p>SCORE</p>
-            <button id="scoreButton">update</button>
-            <p id="scoreRecord">0</p>
-        </div>
-    </div>
+	<h1>ROCK, PAPER, SCISSORS!</h1>
+	<div class="container">
+			<div id="game">
+				<p>Pick one! First to score 3 wins!</p>
+					<div class="buttons">
+						<button id="Rock">Rock</button>
+						<button id="Paper">Paper</button>
+						<button id="Scissors">Scissors</button>
+					</div>
+					<p id="resultMessage"></p>
+			</div>
+			<div >
+
+			</div>
+			
+			<div class="scoreBoard">
+				<h3>SCORE BOARD</h3>
+				<div>
+					<div id="userScore">
+						<p>USER SCORE</p>
+						<p id="userRecord">0</p>
+					</div>
+					<div id="compScore">
+						<p>COMPUTER SCORE</p>
+						<p id="compRecord">0</p>
+					</div>
+				</div>
+			</div>
+	</div>
 </body>
 </html>

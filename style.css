@@ -1,27 +1,30 @@
 * {
-    background-color: rgb(56, 104, 104);
+    background-color: rgb(153, 153, 153);
 }
 
 h1 {
     text-align: center;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .container {
-    display: flex;
+    /* border: 2px solid red; */
+    padding: 20px;
+    justify-content: space-evenly;
 }
 
-#buttonsContainer {
+#game {
     text-align: center;
-    border: 2px solid blue;
+    padding: 20px;
+    /* border: 2px solid blue; */
 }
 
-.scoreBoard {
-    border: 2px solid green;
+.scoreBoard > * {
+    /* border: 2px solid green; */
 }
 
-#resultMessage {
-    font-size: large;
+body {
+    font-size: x-large;
 }
 
 button {
@@ -29,8 +32,26 @@ button {
     background-color: blue;
 }
 
-.scoreBoard {
+.scoreBoard h3 {
+    text-align: center;
+}
+
+.scoreBoard div {
     display: flex;
-    gap: 20px;
-    padding: 10px;
+    justify-content: center;
+}
+
+.scoreBoard div > * {
+    /* border: 2px solid orange; */
+    margin: 20px
+}
+
+#userScore, #compScore {
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+#resultMessage {
+    height: 80px;
 }

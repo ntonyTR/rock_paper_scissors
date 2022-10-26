@@ -2,16 +2,20 @@ let playerChoice;
 let compChoice;
 let roundResult;
 let resultMessage;
+let userScore = 0;
+let compScore = 0;
+let maxRounds = 3;
 const buttons = document.querySelectorAll("button");
 const buttonsContainer = document.querySelector("#buttonsContainer");
-const message = document.createElement("p");
-let score = document.querySelector(".scoreRecord");
+const message = document.querySelector("#resultMessage");
 
-getUserChoice();
+game();
 
-function getUserChoice() {
+function game() {
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      if (userScore >= maxRounds) return alert(`You win!`);
+      else if (compScore >= maxRounds) return alert(`You lose!`);
       playerChoice = button.id;
       playRound();
     });
@@ -21,8 +25,8 @@ function getUserChoice() {
 function playRound() {
   getCompChoice();
   makeComparison(playerChoice, compChoice);
-  alerts();
   showResult();
+  updateScore();
 }
 
 function getCompChoice() {
@@ -52,27 +56,22 @@ function makeComparison(player, computer) {
   }
 }
 
-function alerts() {
+function showResult() {
   resultMessage =
     roundResult === "tie"
-      ? `Is a tie!`
+      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>Is a tie!</p>`
       : roundResult === "win"
-      ? `You win!`
+      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>You win!</p>`
       : roundResult === "lose"
-      ? `You lose!`
+      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>You lose!</p>`
       : `Invalid option`;
+
+  message.innerHTML = resultMessage;
 }
 
-function showResult() {
-  message.textContent = resultMessage;
-  buttonsContainer.appendChild(message);
-}
-
-// code by Antony TR
-let scoreBtn = document.getElementById("scoreButton");
 function updateScore() {
-  // implementar if/else, para cuando gane player o computadora
-  score++;
-  document.querySelector("#scoreRecord").textContent = score;
+  if (roundResult == "win") userScore++;
+  else if (roundResult == "lose") compScore++;
+  document.querySelector("#userRecord").textContent = userScore;
+  document.querySelector("#compRecord").textContent = compScore;
 }
-scoreBtn.addEventListener("click", updateScore);
