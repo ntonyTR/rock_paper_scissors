@@ -13,12 +13,15 @@
 	<div class="container">
 			<div id="game">
 				<p>Pick one! First to score 3 wins!</p>
-					<div class="buttons">
-						<button id="Rock">Rock</button>
-						<button id="Paper">Paper</button>
-						<button id="Scissors">Scissors</button>
+					<div class="buttonsContainer">
+						<button id="rock">💎</button>
+						<button id="paper">📰</button>
+						<button id="scissors">✌</button>
 					</div>
-					<p id="resultMessage"></p>
+					<div id="resultContainer">
+						<!-- <p id="resultMessage"></p> -->
+						<button id="restartButton" class="hidden">RESTART</button>
+					</div>
 			</div>
 			<div >
 
@@ -26,13 +29,19 @@
 			
 			<div class="scoreBoard">
 				<h3>SCORE BOARD</h3>
-				<div>
+				<div class="container">
 					<div id="userScore">
-						<p>USER SCORE</p>
+						<div id="userChoice"></div>
+						<p>YOU</p>
 						<p id="userRecord">0</p>
 					</div>
+					<div class="middle">
+						<p>VS</p>
+						<p id="result"></p>
+					</div>
 					<div id="compScore">
-						<p>COMPUTER SCORE</p>
+						<div id="compChoice"></div>
+						<p>COMPUTER</p>
 						<p id="compRecord">0</p>
 					</div>
 				</div>

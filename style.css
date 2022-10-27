@@ -1,21 +1,21 @@
 * {
-    background-color: rgb(153, 153, 153);
+    background-color: rgb(255, 143, 143);
+    text-align: center;
 }
 
 h1 {
     text-align: center;
+    font-size: 28px;
     /* border: 2px solid black; */
 }
 
 .container {
     /* border: 2px solid red; */
-    padding: 20px;
     justify-content: space-evenly;
 }
 
 #game {
     text-align: center;
-    padding: 20px;
     /* border: 2px solid blue; */
 }
 
@@ -28,8 +28,19 @@ body {
 }
 
 button {
-    font-size: 64px;
+    font-size: 28px;
     background-color: blue;
+    cursor:pointer;
+
+
+}
+
+#rock, #paper, #scissors, #compChoice, #userChoice {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 64px;
+
 }
 
 .scoreBoard h3 {
@@ -54,4 +65,29 @@ button {
 
 #resultMessage {
     height: 80px;
+}
+
+.active {
+    visibility: visible;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+#resultContainer {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    gap: 30px;
+}
+
+.scoreBoard .container {
+    display: flex;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
 }

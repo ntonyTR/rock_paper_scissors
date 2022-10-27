@@ -26,7 +26,4 @@ The `game()` implements a for loop that repeats the `getUserChoice`, `getCompCho
 
 TO DO LIST
 
-- ventana de alerta para el GAME OVER
-- que GAME OVER aparezca cuando se alcance el resultado final, no cuando presiones un boton
-- mostrar eleccion de computador y usuario
 - UI mas estetica

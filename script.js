@@ -6,27 +6,39 @@ let userScore = 0;
 let compScore = 0;
 let maxRounds = 3;
 const buttons = document.querySelectorAll("button");
-const buttonsContainer = document.querySelector("#buttonsContainer");
-const message = document.querySelector("#resultMessage");
+// const message = document.getElementById("resultMessage");
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+// const resultContainer = document.getElementById("resultContainer");
+const restartButton = document.getElementById("restartButton");
+const userIndicator = document.getElementById("userChoice");
+const compIndicator = document.getElementById("compChoice");
+const resultIndicator = document.getElementById("result");
 
-game();
+rockBtn.addEventListener("click", () => play("Rock"));
+paperBtn.addEventListener("click", () => play("Paper"));
+scissorsBtn.addEventListener("click", () => play("Scissors"));
+restartButton.addEventListener("click", restartGame);
 
-function game() {
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (userScore >= maxRounds) return alert(`You win!`);
-      else if (compScore >= maxRounds) return alert(`You lose!`);
-      playerChoice = button.id;
-      playRound();
-    });
-  });
-}
+function play(player) {
+  if (isGameOver()) {
+    showGameOver();
+    showRestartButton();
+    return;
+  }
 
-function playRound() {
+  playerChoice = player;
   getCompChoice();
-  makeComparison(playerChoice, compChoice);
-  showResult();
+  makeComparison(player, compChoice);
+  showElections();
+  showResult(player);
   updateScore();
+
+  if (isGameOver()) {
+    showGameOver();
+    showRestartButton();
+  }
 }
 
 function getCompChoice() {
@@ -56,17 +68,16 @@ function makeComparison(player, computer) {
   }
 }
 
-function showResult() {
-  resultMessage =
-    roundResult === "tie"
-      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>Is a tie!</p>`
-      : roundResult === "win"
-      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>You win!</p>`
-      : roundResult === "lose"
-      ? `<p>You chose ${playerChoice}<br>Computer chose ${compChoice}<br>You lose!</p>`
-      : `Invalid option`;
-
-  message.innerHTML = resultMessage;
+function showResult(player) {
+  // resultMessage =
+  //   roundResult === "tie"
+  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>Is a tie!</p>`
+  //     : roundResult === "win"
+  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>You win!</p>`
+  //     : roundResult === "lose"
+  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>You lose!</p>`
+  //     : `Invalid option`;
+  // message.innerHTML = resultMessage;
 }
 
 function updateScore() {
@@ -74,4 +85,72 @@ function updateScore() {
   else if (roundResult == "lose") compScore++;
   document.querySelector("#userRecord").textContent = userScore;
   document.querySelector("#compRecord").textContent = compScore;
+}
+
+// make GAME OVER appear only when we reach the final result, without having to press the button again
+function isGameOver() {
+  return userScore == maxRounds || compScore == maxRounds;
+}
+
+function showGameOver() {
+  if (userScore == 3) {
+    resultIndicator.innerHTML = `<p>GAME OVER<br>YOU WIN</p>`;
+  } else if (compScore == 3) {
+    resultIndicator.innerHTML = `<p>GAME OVER<br>YOU LOSE</p>`;
+  }
+}
+
+// make a restart button
+function showRestartButton() {
+  restartButton.classList.remove("hidden");
+  restartButton.classList.add("active");
+}
+
+function hideRestartButton() {
+  restartButton.classList.remove("active");
+  restartButton.classList.add("hidden");
+}
+
+function restartGame() {
+  roundResult = "";
+  userScore = 0;
+  compScore = 0;
+  // message.innerHTML = ``;
+  userIndicator.innerText = ``;
+  compIndicator.innerText = ``;
+  updateScore();
+  hideRestartButton();
+}
+
+// show userChoice and compChoice separated by 'you win/lose'
+function showElections() {
+  switch (playerChoice) {
+    case "Rock":
+      userIndicator.innerText = `💎`;
+      break;
+
+    case "Paper":
+      userIndicator.textContent = `📰`;
+      break;
+
+    case "Scissors":
+      userIndicator.textContent = `✌`;
+      break;
+  }
+
+  switch (compChoice) {
+    case "Rock":
+      compIndicator.innerText = `💎`;
+      break;
+
+    case "Paper":
+      compIndicator.textContent = `📰`;
+      break;
+
+    case "Scissors":
+      compIndicator.textContent = `✌`;
+      break;
+  }
+
+  resultIndicator.textContent = roundResult;
 }
