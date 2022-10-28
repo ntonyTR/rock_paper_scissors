@@ -6,11 +6,9 @@ let userScore = 0;
 let compScore = 0;
 let maxRounds = 3;
 const buttons = document.querySelectorAll("button");
-// const message = document.getElementById("resultMessage");
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
-// const resultContainer = document.getElementById("resultContainer");
 const restartButton = document.getElementById("restartButton");
 const userIndicator = document.getElementById("userChoice");
 const compIndicator = document.getElementById("compChoice");
@@ -32,7 +30,6 @@ function play(player) {
   getCompChoice();
   makeComparison(player, compChoice);
   showElections();
-  showResult(player);
   updateScore();
 
   if (isGameOver()) {
@@ -51,38 +48,26 @@ function getCompChoice() {
 function makeComparison(player, computer) {
   switch (true) {
     case player == computer:
-      return (roundResult = "tie");
+      return (roundResult = "TIE");
 
     case (player === "Rock" && computer == "Scissors") ||
       (player === "Paper" && computer == "Rock") ||
       (player === "Scissors" && computer == "Paper"):
-      return (roundResult = "win");
+      return (roundResult = "WIN");
 
     case (player === "Rock" && computer == "Paper") ||
       (player === "Paper" && computer == "Scissors") ||
       (player === "Scissors" && computer == "Rock"):
-      return (roundResult = "lose");
+      return (roundResult = "LOSE");
 
     default:
-      return (roundResult = "invalid");
+      return (roundResult = "INVALID");
   }
 }
 
-function showResult(player) {
-  // resultMessage =
-  //   roundResult === "tie"
-  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>Is a tie!</p>`
-  //     : roundResult === "win"
-  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>You win!</p>`
-  //     : roundResult === "lose"
-  //     ? `<p>You chose ${player}<br>Computer chose ${compChoice}<br>You lose!</p>`
-  //     : `Invalid option`;
-  // message.innerHTML = resultMessage;
-}
-
 function updateScore() {
-  if (roundResult == "win") userScore++;
-  else if (roundResult == "lose") compScore++;
+  if (roundResult == "WIN") userScore++;
+  else if (roundResult == "LOSE") compScore++;
   document.querySelector("#userRecord").textContent = userScore;
   document.querySelector("#compRecord").textContent = compScore;
 }
@@ -94,9 +79,9 @@ function isGameOver() {
 
 function showGameOver() {
   if (userScore == 3) {
-    resultIndicator.innerHTML = `<p>GAME OVER<br>YOU WIN</p>`;
+    resultIndicator.innerHTML = `<p>YOU WIN</p>`;
   } else if (compScore == 3) {
-    resultIndicator.innerHTML = `<p>GAME OVER<br>YOU LOSE</p>`;
+    resultIndicator.innerHTML = `<p>YOU LOSE</p>`;
   }
 }
 
@@ -115,9 +100,9 @@ function restartGame() {
   roundResult = "";
   userScore = 0;
   compScore = 0;
-  // message.innerHTML = ``;
   userIndicator.innerText = ``;
   compIndicator.innerText = ``;
+  resultIndicator.innerHTML = ``;
   updateScore();
   hideRestartButton();
 }

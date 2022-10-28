@@ -8,44 +8,47 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js" defer></script>
 </head>
-<body>
-	<h1>ROCK, PAPER, SCISSORS!</h1>
-	<div class="container">
-			<div id="game">
-				<p>Pick one! First to score 3 wins!</p>
-					<div class="buttonsContainer">
-						<button id="rock">💎</button>
-						<button id="paper">📰</button>
-						<button id="scissors">✌</button>
-					</div>
-					<div id="resultContainer">
-						<!-- <p id="resultMessage"></p> -->
-						<button id="restartButton" class="hidden">RESTART</button>
-					</div>
-			</div>
-			<div >
 
+<body>
+	<header>
+		<h1>ROCK, PAPER, SCISSORS!</h1>
+		<p>Pick one! First to score 3 wins!</p>
+	</header>	
+
+	<div id="game">
+			<div class="buttonsContainer">
+				<button id="rock" class="emoji">💎</button>
+				<button id="paper" class="emoji">📰</button>
+				<button id="scissors" class="emoji">✌</button>
 			</div>
 			
-			<div class="scoreBoard">
-				<h3>SCORE BOARD</h3>
-				<div class="container">
-					<div id="userScore">
-						<div id="userChoice"></div>
-						<p>YOU</p>
-						<p id="userRecord">0</p>
-					</div>
-					<div class="middle">
-						<p>VS</p>
-						<p id="result"></p>
-					</div>
-					<div id="compScore">
-						<div id="compChoice"></div>
-						<p>COMPUTER</p>
-						<p id="compRecord">0</p>
-					</div>
-				</div>
-			</div>
+			<button id="restartButton" class="hidden">RESTART</button>
 	</div>
+
+	
+	<div class="scoreBoard">
+		<h3 class="title">SCORE BOARD</h3>
+		
+		<div id="score">
+			<div id="userScore">
+				<div id="userChoice" class="emoji"></div>
+				<p>YOU</p>
+				<p id="userRecord">0</p>
+			</div>
+			
+			<div id="middle">
+				<p id="result"></p>
+				<p id="versus">VS</p>
+			</div>
+
+			<div id="compScore">
+				<div id="compChoice" class="emoji"></div>
+				<p>COMPUTER</p>
+				<p id="compRecord">0</p>
+			</div>
+		</div>
+	</div>
+
+	<footer>Made by <a href="https://github.com/ntonyTR">Antony TR</a></footer>
 </body>
 </html>

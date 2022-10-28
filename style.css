@@ -1,93 +1,128 @@
 * {
-    background-color: rgb(255, 143, 143);
     text-align: center;
+    color: #ffffff;
 }
-
-h1 {
-    text-align: center;
-    font-size: 28px;
-    /* border: 2px solid black; */
-}
-
-.container {
-    /* border: 2px solid red; */
-    justify-content: space-evenly;
-}
-
-#game {
-    text-align: center;
-    /* border: 2px solid blue; */
-}
-
-.scoreBoard > * {
-    /* border: 2px solid green; */
-}
-
 body {
-    font-size: x-large;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 97vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #064e87;
+}
+/* header */
+header h1 {
+    font-size: 42px;
+    margin-bottom: 30px;
+    margin-top: 5px;
 }
 
+header p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/* game section */
 button {
-    font-size: 28px;
-    background-color: blue;
     cursor:pointer;
-
-
 }
 
-#rock, #paper, #scissors, #compChoice, #userChoice {
+#restartButton {
+    font-size: 32px;
+    background-color: #f5fc1e;
+    border-radius: 16px;
+    border: 3px solid #000000;
+    color: #000000;
+    outline: none;
+    margin: 20px auto 40px auto;
+    padding: 5px 25px;
+    transition: .3s;
+}
+
+.buttonsContainer {
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.emoji {
+    font-size: 96px;
+    margin: 30px;
     background-color: transparent;
     outline: none;
     border: none;
-    font-size: 64px;
-
+    transition: .4s;
 }
 
-.scoreBoard h3 {
-    text-align: center;
-}
-
-.scoreBoard div {
-    display: flex;
-    justify-content: center;
-}
-
-.scoreBoard div > * {
-    /* border: 2px solid orange; */
-    margin: 20px
-}
-
-#userScore, #compScore {
-    display: block;
-    text-align: center;
-    margin: 20px;
-}
-
-#resultMessage {
-    height: 80px;
+.emoji:focus {
+    text-shadow: 0px 0px 1rem #f5fc1e;
+    border-color: #f5fc1e;
+    transform: scale(1.3);
 }
 
 .active {
     visibility: visible;
+    opacity: 1.0;
 }
 
 .hidden {
-    display: none;
     visibility: hidden;
+    opacity: 0.0;
 }
 
-#resultContainer {
+/* scoreboard section*/
+.scoreBoard {
+    background-color: #001229;
+    font-size: large;
+}
+#game {
+    background-color: #00275a;
+}
+
+.scoreBoard .title {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: -30px;
+}
+
+#score {
     display: flex;
     justify-content: center;
-    margin: 30px;
-    gap: 30px;
 }
 
-.scoreBoard .container {
-    display: flex;
+#userScore, #middle, #compScore {
+    min-height: 100px;
+    min-width: 100px;
 }
 
-.middle {
-    display: flex;
-    flex-direction: column;
+#userChoice, #compChoice {
+    font-size: 64px;
+    min-height: 79px;
+    min-width: 79px;
 }
+#result {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+}
+#middle {
+    margin: 40px 0px 0px 0px;
+}
+
+#versus {
+    margin-top: 20px;
+}
+
+/* footer */
+
+footer {
+    margin-top: auto;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+}
+
