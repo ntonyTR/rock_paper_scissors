@@ -44,7 +44,7 @@ button {
 }
 
 .emoji {
-    font-size: 96px;
+    font-size: 72px;
     margin: 30px;
     background-color: transparent;
     outline: none;
@@ -94,13 +94,12 @@ button {
 }
 
 #userChoice, #compChoice {
-    font-size: 64px;
+    font-size: 48px;
     min-height: 79px;
     min-width: 79px;
 }
 #result {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: bolder;
 }
 #middle {
     margin: 40px 0px 0px 0px;
@@ -125,4 +124,3 @@ a {
     color: rgb(255, 255, 255);
     background-color: transparent;
 }
-

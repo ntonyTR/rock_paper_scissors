@@ -2,9 +2,12 @@ let playerChoice;
 let compChoice;
 let roundResult;
 let resultMessage;
-let userScore = 0;
-let compScore = 0;
 let maxRounds = 3;
+let userScore = maxRounds;
+let compScore = maxRounds;
+const chanceIndicator = `🤍`;
+let compLives = Array(compScore).fill(chanceIndicator).join(" ");
+let userLives = Array(userScore).fill(chanceIndicator).join(" ");
 const buttons = document.querySelectorAll("button");
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
@@ -19,6 +22,7 @@ paperBtn.addEventListener("click", () => play("Paper"));
 scissorsBtn.addEventListener("click", () => play("Scissors"));
 restartButton.addEventListener("click", restartGame);
 
+updateScore();
 function play(player) {
   if (isGameOver()) {
     showGameOver();
@@ -66,26 +70,29 @@ function makeComparison(player, computer) {
 }
 
 function updateScore() {
-  if (roundResult == "WIN") userScore++;
-  else if (roundResult == "LOSE") compScore++;
-  document.querySelector("#userRecord").textContent = userScore;
-  document.querySelector("#compRecord").textContent = compScore;
+  if (roundResult == "WIN") {
+    compScore--;
+    compLives = Array(compScore).fill(chanceIndicator).join(" ");
+  } else if (roundResult == "LOSE") {
+    userScore--;
+    userLives = Array(userScore).fill(chanceIndicator).join(" ");
+  }
+  document.querySelector("#userRecord").textContent = userLives;
+  document.querySelector("#compRecord").textContent = compLives;
 }
 
-// make GAME OVER appear only when we reach the final result, without having to press the button again
 function isGameOver() {
-  return userScore == maxRounds || compScore == maxRounds;
+  return userScore == 0 || compScore == 0;
 }
 
 function showGameOver() {
-  if (userScore == 3) {
-    resultIndicator.innerHTML = `<p>YOU WIN</p>`;
-  } else if (compScore == 3) {
-    resultIndicator.innerHTML = `<p>YOU LOSE</p>`;
+  if (userScore == 0) {
+    resultIndicator.innerHTML = `<p>YOU FAILED!</p>`;
+  } else if (compScore == 0) {
+    resultIndicator.innerHTML = `<p>VICTORY!</p>`;
   }
 }
 
-// make a restart button
 function showRestartButton() {
   restartButton.classList.remove("hidden");
   restartButton.classList.add("active");
@@ -98,24 +105,25 @@ function hideRestartButton() {
 
 function restartGame() {
   roundResult = "";
-  userScore = 0;
-  compScore = 0;
+  userScore = maxRounds;
+  compScore = maxRounds;
   userIndicator.innerText = ``;
   compIndicator.innerText = ``;
   resultIndicator.innerHTML = ``;
+  compLives = Array(compScore).fill(chanceIndicator).join(" ");
+  userLives = Array(userScore).fill(chanceIndicator).join(" ");
   updateScore();
   hideRestartButton();
 }
 
-// show userChoice and compChoice separated by 'you win/lose'
 function showElections() {
   switch (playerChoice) {
     case "Rock":
-      userIndicator.innerText = `💎`;
+      userIndicator.innerText = `✊`;
       break;
 
     case "Paper":
-      userIndicator.textContent = `📰`;
+      userIndicator.textContent = `✋`;
       break;
 
     case "Scissors":
@@ -125,11 +133,11 @@ function showElections() {
 
   switch (compChoice) {
     case "Rock":
-      compIndicator.innerText = `💎`;
+      compIndicator.innerText = `✊`;
       break;
 
     case "Paper":
-      compIndicator.textContent = `📰`;
+      compIndicator.textContent = `✋`;
       break;
 
     case "Scissors":
