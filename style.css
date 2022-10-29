@@ -1,28 +1,55 @@
-* {
-    text-align: center;
-    color: #ffffff;
-}
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    min-height: 97vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #064e87;
+    background-color: #616161;
+    text-align: center;
 }
 /* header */
-header h1 {
-    font-size: 42px;
-    margin-bottom: 30px;
-    margin-top: 5px;
-}
 
-header p {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
 /* game section */
 button {
     cursor:pointer;
+}
+
+
+.emoji {
+    font-size: 72px;
+    margin: 30px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: .4s;
+}
+
+.buttonsContainer .emoji:focus {
+    text-shadow: 0px 0px 1rem #f5fc1e;
+    border-color: #f5fc1e;
+    transform: scale(1.3);
+}
+
+.compBtnsContainer {
+    transform: rotate(180deg);
+}
+
+.compElection {
+    text-shadow: 0px 0px 1rem #fc1e1e;
+    border-color: #f5fc1e;
+    transform: scale(1.3);
+}
+
+/* popup */
+#ggPopup {
+    width: 400px;
+    padding: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    transition: .1s;
+    visibility: hidden;
 }
 
 #restartButton {
@@ -37,90 +64,10 @@ button {
     transition: .3s;
 }
 
-.buttonsContainer {
-    justify-content: center;
-    flex-wrap: wrap;
-    display: flex;
-}
-
-.emoji {
-    font-size: 72px;
-    margin: 30px;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    transition: .4s;
-}
-
-.emoji:focus {
-    text-shadow: 0px 0px 1rem #f5fc1e;
-    border-color: #f5fc1e;
-    transform: scale(1.3);
-}
-
 .active {
     visibility: visible;
-    opacity: 1.0;
 }
 
 .hidden {
     visibility: hidden;
-    opacity: 0.0;
-}
-
-/* scoreboard section*/
-.scoreBoard {
-    background-color: #001229;
-    font-size: large;
-}
-#game {
-    background-color: #00275a;
-}
-
-.scoreBoard .title {
-    font-size: 24px;
-    margin-top: 30px;
-    margin-bottom: -30px;
-}
-
-#score {
-    display: flex;
-    justify-content: center;
-}
-
-#userScore, #middle, #compScore {
-    min-height: 100px;
-    min-width: 100px;
-}
-
-#userChoice, #compChoice {
-    font-size: 48px;
-    min-height: 79px;
-    min-width: 79px;
-}
-#result {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-#middle {
-    margin: 40px 0px 0px 0px;
-}
-
-#versus {
-    margin-top: 20px;
-}
-
-/* footer */
-
-footer {
-    margin-top: auto;
-    margin-bottom: 0;
-    padding: 0;
-    font-size: 22px;
-}
-
-a {
-    text-decoration: none;
-    font-weight: bolder;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
 }

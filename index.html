@@ -12,43 +12,47 @@
 <body>
 	<header>
 		<h1>ROCK, PAPER, SCISSORS!</h1>
+		<h3>Pick one! First to score 3 wins!</h3>
 	</header>	
 
-<div class="scoreBoard">
-		
-  <div id="score">
-			<div id="userScore">
-				<div id="userChoice" class="emoji"></div>
-				<p>YOU</p>
-				<p id="userRecord">0</p>
-			</div>
-			
-			<div id="middle">
-				<p id="versus">VS</p>
-				<p id="result"></p>
-			</div>
+	<div id="compScore">
+		<!-- <div id="compChoice" class="emoji"></div> -->
+		<p id="compRecord"></p>
+		<p>COMPUTER</p>
+	</div>
 
-			<div id="compScore">
-				<div id="compChoice" class="emoji"></div>
-				<p>COMPUTER</p>
-				<p id="compRecord">0</p>
-			</div>
-		</div>
+	<div class="compBtnsContainer">
+		<button id="compRock" class="emoji">✊</button>
+		<button id="compPaper" class="emoji">✋</button>
+		<button id="compScissors" class="emoji">✌</button>
+	</div>
+
+
+	<div id="middle">
+		<p id="versus">VS</p>
+		<p id="result"></p>
 	</div>
 
 	<div id="game">
-		<h3>Pick one! First to score 3 wins!</h3>
-			<div class="buttonsContainer">
-				<button id="rock" class="emoji">✊</button>
-				<button id="paper" class="emoji">✋</button>
-				<button id="scissors" class="emoji">✌</button>
-			</div>
-			
-			<button id="restartButton" class="hidden">RESTART</button>
+
+		<div class="buttonsContainer">
+			<button id="rock" class="emoji">✊</button>
+			<button id="paper" class="emoji">✋</button>
+			<button id="scissors" class="emoji">✌</button>
+		</div>
+
+		<div id="userScore">
+			<!-- <div id="userChoice" class="emoji"></div> -->
+			<p>YOU</p>
+			<p id="userRecord"></p>
+		</div>
+
 	</div>
 
-	
-	
+	<div id="ggPopup">
+		<p>GG</p>
+		<button id="restartButton">RESTART</button>
+	</div>
 
 	<footer>Made by <a href="https://github.com/ntonyTR">Antony TR</a></footer>
 </body>

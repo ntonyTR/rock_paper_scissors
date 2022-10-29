@@ -13,13 +13,17 @@ const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const restartButton = document.getElementById("restartButton");
-const userIndicator = document.getElementById("userChoice");
-const compIndicator = document.getElementById("compChoice");
+const ggPopup = document.getElementById("ggPopup");
 const resultIndicator = document.getElementById("result");
 
 rockBtn.addEventListener("click", () => play("Rock"));
 paperBtn.addEventListener("click", () => play("Paper"));
 scissorsBtn.addEventListener("click", () => play("Scissors"));
+
+const compRock = document.getElementById("compRock");
+const compPaper = document.getElementById("compPaper");
+const compScissors = document.getElementById("compScissors");
+
 restartButton.addEventListener("click", restartGame);
 
 updateScore();
@@ -29,6 +33,10 @@ function play(player) {
     showRestartButton();
     return;
   }
+  // make it function
+  compRock.classList.remove(`compElection`);
+  compPaper.classList.remove(`compElection`);
+  compScissors.classList.remove(`compElection`);
 
   playerChoice = player;
   getCompChoice();
@@ -94,54 +102,57 @@ function showGameOver() {
 }
 
 function showRestartButton() {
-  restartButton.classList.remove("hidden");
-  restartButton.classList.add("active");
+  ggPopup.style.visibility = "visible";
 }
 
 function hideRestartButton() {
-  restartButton.classList.remove("active");
-  restartButton.classList.add("hidden");
+  ggPopup.style.visibility = "hidden";
 }
 
 function restartGame() {
   roundResult = "";
   userScore = maxRounds;
   compScore = maxRounds;
-  userIndicator.innerText = ``;
-  compIndicator.innerText = ``;
   resultIndicator.innerHTML = ``;
   compLives = Array(compScore).fill(chanceIndicator).join(" ");
   userLives = Array(userScore).fill(chanceIndicator).join(" ");
   updateScore();
   hideRestartButton();
+  // make it function
+  compRock.classList.remove(`compElection`);
+  compPaper.classList.remove(`compElection`);
+  compScissors.classList.remove(`compElection`);
 }
 
 function showElections() {
-  switch (playerChoice) {
-    case "Rock":
-      userIndicator.innerText = `✊`;
-      break;
+  // switch (playerChoice) {
+  //   case "Rock":
+  //     userIndicator.innerText = `✊`;
+  //     break;
 
-    case "Paper":
-      userIndicator.textContent = `✋`;
-      break;
+  //   case "Paper":
+  //     userIndicator.textContent = `✋`;
+  //     break;
 
-    case "Scissors":
-      userIndicator.textContent = `✌`;
-      break;
-  }
+  //   case "Scissors":
+  //     userIndicator.textContent = `✌`;
+  //     break;
+  // }
 
   switch (compChoice) {
     case "Rock":
-      compIndicator.innerText = `✊`;
+      // compIndicator.innerText = `✊`;
+      compRock.classList.add(`compElection`);
       break;
 
     case "Paper":
-      compIndicator.textContent = `✋`;
+      // compIndicator.textContent = `✋`;
+      compPaper.classList.add(`compElection`);
       break;
 
     case "Scissors":
-      compIndicator.textContent = `✌`;
+      // compIndicator.textContent = `✌`;
+      compScissors.classList.add(`compElection`);
       break;
   }
 
