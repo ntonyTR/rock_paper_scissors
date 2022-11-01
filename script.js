@@ -1,76 +1,64 @@
-let playerChoice;
-let compChoice;
+let userSelection;
+let computerSelection;
 let roundResult;
-let resultMessage;
-let maxRounds = 3;
-let userScore = maxRounds;
-let compScore = maxRounds;
-const chanceIndicator = `💗`;
-const compChanceIndicator = `👽`;
-let compLives = Array(compScore).fill(compChanceIndicator).join(" ");
-let userLives = Array(userScore).fill(chanceIndicator).join(" ");
-const buttons = document.querySelectorAll("button");
-const rockBtn = document.getElementById("rock");
-const paperBtn = document.getElementById("paper");
-const scissorsBtn = document.getElementById("scissors");
-const restartButton = document.getElementById("restartButton");
-const ggPopup = document.getElementById("ggPopup");
-const resultIndicator = document.getElementById("result");
-const compRock = document.getElementById("compRock");
-const compPaper = document.getElementById("compPaper");
-const compScissors = document.getElementById("compScissors");
-const roundResultIndicator = document.getElementById("roundResult");
+let rounds = 3;
+let userScore = rounds;
+let computerScore = rounds;
+const userLifeSymbol = `💗`;
+const computerLifeSymbol = `👽`;
+let userLife = Array(userScore).fill(userLifeSymbol).join(" ");
+let computerLife = Array(computerScore).fill(computerLifeSymbol).join(" ");
+const computerRock = document.getElementById("computer_rock");
+const computerPaper = document.getElementById("computer_paper");
+const computerScissors = document.getElementById("computer_scissors");
+const roundWinner = document.getElementById("round_winner");
+const userRock = document.getElementById("user_rock");
+const userPaper = document.getElementById("user_paper");
+const userScissors = document.getElementById("user_scissors");
+const gameOver = document.getElementById("game_over");
+const finalResult = document.getElementById("final_result");
+const restartBtn = document.getElementById("restart_btn");
 
-rockBtn.addEventListener("click", () => play("Rock"));
-paperBtn.addEventListener("click", () => play("Paper"));
-scissorsBtn.addEventListener("click", () => play("Scissors"));
-restartButton.addEventListener("click", restartGame);
+userRock.addEventListener("click", () => play("Rock"));
+userPaper.addEventListener("click", () => play("Paper"));
+userScissors.addEventListener("click", () => play("Scissors"));
+restartBtn.addEventListener("click", restartGame);
 
 updateScore();
 
-function play(player) {
-  if (isGameOver()) {
-    showGameOver();
-    showDiv(ggPopup);
-    return;
-  }
-
-  hideCompElection(compRock);
-  hideCompElection(compPaper);
-  hideCompElection(compScissors);
-
-  playerChoice = player;
-  getCompChoice();
-  makeComparison(player, compChoice);
+function play(selection) {
+  userSelection = selection;
+  hideComputer();
+  getComputerSelection();
+  makeComparison(selection, computerSelection);
   showElections();
   updateScore();
 
   if (isGameOver()) {
-    showGameOver();
-    showDiv(ggPopup);
+    return;
   }
 }
 
-function getCompChoice() {
-  const randomNum = Math.floor(Math.random() * 3);
-  compChoice =
-    randomNum === 0 ? "Rock" : randomNum === 1 ? "Paper" : "Scissors";
-  return compChoice;
+function getComputerSelection() {
+  const random = Math.floor(Math.random() * 3);
+  computerSelection =
+    random === 0 ? "Rock" : random === 1 ? "Paper" : "Scissors";
+  return random;
 }
 
-function makeComparison(player, computer) {
+function makeComparison(user, computer) {
   switch (true) {
-    case player == computer:
+    case user == computer:
       return (roundResult = "TIE");
 
-    case (player === "Rock" && computer == "Scissors") ||
-      (player === "Paper" && computer == "Rock") ||
-      (player === "Scissors" && computer == "Paper"):
+    case (user === "Rock" && computer == "Scissors") ||
+      (user === "Paper" && computer == "Rock") ||
+      (user === "Scissors" && computer == "Paper"):
       return (roundResult = "WIN");
 
-    case (player === "Rock" && computer == "Paper") ||
-      (player === "Paper" && computer == "Scissors") ||
-      (player === "Scissors" && computer == "Rock"):
+    case (user === "Rock" && computer == "Paper") ||
+      (user === "Paper" && computer == "Scissors") ||
+      (user === "Scissors" && computer == "Rock"):
       return (roundResult = "LOSE");
 
     default:
@@ -80,72 +68,60 @@ function makeComparison(player, computer) {
 
 function updateScore() {
   if (roundResult == "WIN") {
-    compScore--;
-    compLives = Array(compScore).fill(compChanceIndicator).join(" ");
+    computerScore--;
+    computerLife = Array(computerScore).fill(computerLifeSymbol).join(" ");
   } else if (roundResult == "LOSE") {
     userScore--;
-    userLives = Array(userScore).fill(chanceIndicator).join(" ");
+    userLife = Array(userScore).fill(userLifeSymbol).join(" ");
   }
-  document.querySelector("#userRecord").textContent = userLives;
-  document.querySelector("#compRecord").textContent = compLives;
+  document.querySelector("#user_life").textContent = userLife;
+  document.querySelector("#computer_life").textContent = computerLife;
 }
 
 function isGameOver() {
-  return userScore == 0 || compScore == 0;
-}
-
-function showGameOver() {
   if (userScore == 0) {
-    resultIndicator.textContent = `YOU FAILED!`;
-  } else if (compScore == 0) {
-    resultIndicator.textContent = `VICTORY!`;
-  }
-}
-
-function showDiv(div) {
-  div.style.visibility = "visible";
-}
-
-function hideDiv(div) {
-  div.style.visibility = "hidden";
+    finalResult.textContent = `YOU FAILED!`;
+    gameOver.style.visibility = "visible";
+    return true;
+  } else if (computerScore == 0) {
+    finalResult.textContent = `VICTORY!`;
+    gameOver.style.visibility = "visible";
+    return true;
+  } else return false;
 }
 
 function restartGame() {
   roundResult = ``;
-  userScore = maxRounds;
-  compScore = maxRounds;
-  resultIndicator.textContent = ``;
-  compLives = Array(compScore).fill(compChanceIndicator).join(" ");
-  userLives = Array(userScore).fill(chanceIndicator).join(" ");
+  userScore = rounds;
+  computerScore = rounds;
+  finalResult.textContent = ``;
+  userLife = Array(userScore).fill(userLifeSymbol).join(" ");
+  computerLife = Array(computerScore).fill(computerLifeSymbol).join(" ");
   updateScore();
-  hideDiv(ggPopup);
-  hideCompElection(compRock);
-  hideCompElection(compPaper);
-  hideCompElection(compScissors);
+  hideComputer();
+  gameOver.style.visibility = "hidden";
 }
 
 function showElections() {
-  switch (compChoice) {
+  switch (computerSelection) {
     case "Rock":
-      showCompElection(compRock);
+      computerRock.classList.add(`compElection`);
       break;
 
     case "Paper":
-      showCompElection(compPaper);
+      computerPaper.classList.add(`compElection`);
       break;
 
     case "Scissors":
-      showCompElection(compScissors);
+      computerScissors.classList.add(`compElection`);
       break;
   }
 
-  roundResultIndicator.textContent = roundResult;
+  roundWinner.textContent = roundResult;
 }
 
-function showCompElection(compBtn) {
-  compBtn.classList.add(`compElection`);
-}
-
-function hideCompElection(compBtn) {
-  compBtn.classList.remove(`compElection`);
+function hideComputer() {
+  computerRock.classList.remove(`compElection`);
+  computerPaper.classList.remove(`compElection`);
+  computerScissors.classList.remove(`compElection`);
 }
