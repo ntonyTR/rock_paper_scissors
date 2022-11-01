@@ -48,7 +48,6 @@ button {
     text-align: center;
     padding: 0 30px 30px;
     color: #333;
-    transition: .1s;
     visibility: hidden;
 }
 
@@ -61,13 +60,28 @@ button {
     outline: none;
     margin: 20px auto 40px auto;
     padding: 5px 25px;
-    transition: .3s;
 }
 
-.active {
-    visibility: visible;
+#roundSelection {
+    width: 400px;
+    padding: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
 }
 
-.hidden {
-    visibility: hidden;
+#roundSelection > button {
+    font-size: 32px;
+    background-color: #f5fc1e;
+    border-radius: 16px;
+    border: 3px solid #000000;
+    color: #000000;
+    outline: none;
+    margin: 20px auto 40px auto;
+    padding: 5px 25px;
 }
