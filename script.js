@@ -48,17 +48,17 @@ function getComputerSelection() {
 
 function makeComparison(user, computer) {
   switch (true) {
-    case user == computer:
+    case user === computer:
       return (roundResult = "TIE");
 
-    case (user === "Rock" && computer == "Scissors") ||
-      (user === "Paper" && computer == "Rock") ||
-      (user === "Scissors" && computer == "Paper"):
+    case (user === "Rock" && computer === "Scissors") ||
+      (user === "Paper" && computer === "Rock") ||
+      (user === "Scissors" && computer === "Paper"):
       return (roundResult = "WIN");
 
-    case (user === "Rock" && computer == "Paper") ||
-      (user === "Paper" && computer == "Scissors") ||
-      (user === "Scissors" && computer == "Rock"):
+    case (user === "Rock" && computer === "Paper") ||
+      (user === "Paper" && computer === "Scissors") ||
+      (user === "Scissors" && computer === "Rock"):
       return (roundResult = "LOSE");
 
     default:
@@ -67,10 +67,10 @@ function makeComparison(user, computer) {
 }
 
 function updateScore() {
-  if (roundResult == "WIN") {
+  if (roundResult === "WIN") {
     computerScore--;
     computerLife = Array(computerScore).fill(computerLifeSymbol).join(" ");
-  } else if (roundResult == "LOSE") {
+  } else if (roundResult === "LOSE") {
     userScore--;
     userLife = Array(userScore).fill(userLifeSymbol).join(" ");
   }
@@ -79,11 +79,11 @@ function updateScore() {
 }
 
 function isGameOver() {
-  if (userScore == 0) {
+  if (userScore === 0) {
     finalResult.textContent = `YOU FAILED!`;
     gameOver.style.visibility = "visible";
     return true;
-  } else if (computerScore == 0) {
+  } else if (computerScore === 0) {
     finalResult.textContent = `VICTORY!`;
     gameOver.style.visibility = "visible";
     return true;
