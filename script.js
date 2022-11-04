@@ -80,7 +80,7 @@ function updateScore() {
 
 function isGameOver() {
   if (userScore === 0) {
-    finalResult.textContent = `YOU FAILED!`;
+    finalResult.textContent = `FAIL!`;
     gameOver.style.visibility = "visible";
     return true;
   } else if (computerScore === 0) {
@@ -105,15 +105,15 @@ function restartGame() {
 function showElections() {
   switch (computerSelection) {
     case "Rock":
-      computerRock.classList.add(`compElection`);
+      computerRock.classList.add(`computer_selection`);
       break;
 
     case "Paper":
-      computerPaper.classList.add(`compElection`);
+      computerPaper.classList.add(`computer_selection`);
       break;
 
     case "Scissors":
-      computerScissors.classList.add(`compElection`);
+      computerScissors.classList.add(`computer_selection`);
       break;
   }
 
@@ -121,7 +121,7 @@ function showElections() {
 }
 
 function hideComputer() {
-  computerRock.classList.remove(`compElection`);
-  computerPaper.classList.remove(`compElection`);
-  computerScissors.classList.remove(`compElection`);
+  computerRock.classList.remove(`computer_selection`);
+  computerPaper.classList.remove(`computer_selection`);
+  computerScissors.classList.remove(`computer_selection`);
 }

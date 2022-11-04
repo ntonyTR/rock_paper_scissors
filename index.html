@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Rock, Paper, Scissors</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js" defer></script>
 </head>
@@ -12,44 +12,45 @@
 <body>
 	<header>
 		<h1>ROCK, PAPER, SCISSORS!</h1>
-		<h3>Pick one! First to score 3 wins!</h3>
+		<h3>The first to score 3 wins!</h3>
 	</header>	
 
-	<div class="container">
-		<div id="computer">
+	<div id="main_content">
+		<div id="computer" class="container">
 			<p class="text">COMPUTER</p>
 			<p id="computer_life"></p>
 		</div>
 
-		<div id="computer_btns">
+		<div id="computer_btns" class="container">
 			<button id="computer_rock" class="emoji">✊</button>
 			<button id="computer_paper" class="emoji">✋</button>
 			<button id="computer_scissors" class="emoji">✌</button>
 		</div>
 
-
-		<div class="middle">
+		<div id="middle" class="container">
 			<p class="text">VS</p>
 			<p id="round_winner" class="text"></p>
 		</div>
 
-		<div id="user_btns">
+		<div id="user_btns" class="container">
 			<button id="user_rock" class="emoji">✊</button>
 			<button id="user_paper" class="emoji">✋</button>
 			<button id="user_scissors" class="emoji">✌</button>
 		</div>
 
-		<div id="user">
-			<p class="text">YOU</p>
+		<div id="user" class="container">
 			<p id="user_life"></p>
+			<p class="text">YOU</p>
 		</div>
 
-		<div id="game_over">
+		<div id="game_over" class="popup">
 			<p id="final_result"></p>
 			<button id="restart_btn">PLAY AGAIN</button>
 		</div>
 	</div>
 
-	<footer>Made by <a href="https://github.com/ntonyTR">Antony TR.</a></footer>
+	<footer>
+		Made by <a href="https://github.com/ntonyTR">Antony TR.</a>
+	</footer>
 </body>
 </html>

@@ -1,129 +1,161 @@
-html {
-    height: 100%;
+html{
+    position:relative; 
+    min-height: 100%;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #1e406d;
-    color: #fff;
+    box-sizing: border-box;
+    font-family: monospace;
+    background-color: rgb(204, 204, 204);
+    color: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* all emoji */
 .emoji {
-    font-size: 64px;
-    margin: 12px;
     background-color: transparent;
     outline: none;
     border: none;
-    transition: .4s;
+    transition: .3s;
 }
 
+/* user emojis */
 #user_btns button {
     cursor: pointer;
+    font-size: 64px;
+    filter: hue-rotate(355deg);
 }
 
+/* animation when click on emojis */
 #user_btns .emoji:focus {
-    text-shadow: 0px 0px 2rem #9ef9ff;
-    transform: scale(1.4);
+    text-shadow: 0px 0px 18px #0099ff;
+    filter:brightness(110%);
+    transform: scale(1.3);
 }
 
-#computer_btns {
+/* computer buttons  */
+#computer_btns button {
+    font-size: 52px;
+    filter: hue-rotate(60deg);
+}
+
+/* animation when computer makes an election */
+.computer_selection {
     transform: rotate(180deg);
-    filter: hue-rotate(35deg);
-}
-
-.compElection {
-    text-shadow: 0px 0px 2rem #1f0000;
-    transform: scale(1.2);
+    color: rgba(0, 0, 0, .8);  
+    text-shadow: 0px 0px 12px rgb(0, 0, 0);
 }
 
 /* popup */
 #game_over {
-    width: 280px;
-    padding: 20px;
-    background-color: #fff;
+    width: 300px;
+    padding: 0px 30px 30px 30px;
+    background-color: #e6e6e6;
     position: absolute;
-    top: 40%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #333;
     visibility: hidden;
-    border-radius: 16px;
+    border-radius: 18px;
+    border: 3px solid #000;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+
 }
 
-#final_result {
-    margin: auto;
-    font-size: 32px;
-    font-weight: 900;
-}
-
+/* restart button on popup */
 #restart_btn {
-    font-size: 32px;
-    background-color: #f5fc1e;
-    border-radius: 16px;
-    border: 3px solid #000000;
-    color: #000000;
-    outline: none;
-    margin: 20px auto auto auto;
-    padding: 5px 25px;
+    background-color: #ffe600;
+    border-radius: 18px;
+    border: 3px solid #000;
+    color: #333;
+    padding: 10px 30px;
     cursor: pointer;
-}
-
-#computer_life, #user_life {
-    font-size: 28px;
-    height: 28px;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    margin-top: 75px;
-}
-
-footer {
-    position: fixed;
-    padding: 5px;
-    bottom: 0;
-    width: 100%;
-    height: 20px;
-    background-color: rgb(24, 24, 24);
-    font-size:medium;
-}
-
-footer a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 900;
-}
-
-.middle {
-    height: 80px;
-    margin: 15px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
+    font-size: large;
+    font-family: monospace;
 }
 
 header {
-    background-color: rgb(24, 24, 24);
-    width: 100%;
-    bottom: 50%;
+    background-color: #3b3b3b;
 }
 
-.text {
-    font-family: monospace;
-    font-size: 22px;
+h1 {
+    font-size: 32px;
+    letter-spacing: 4px;
     font-weight: 900;
-    letter-spacing: 10px;
-    animation: color-change 1.5s infinite;
 }
-@keyframes color-change {
-    0% { color: rgb(255, 0, 0); }
-    20% { color: rgb(255, 255, 0); }
-    40% { color: rgb(30, 255, 0); }
-    60% { color: rgb(0, 255, 255); }
-    70% { color: rgb(25, 0, 255); }
-    80% { color: rgb(255, 0, 255); }
-    100% { color: rgb(255, 0, 0); }
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+#computer_life {
+    text-shadow: 0px 0px 8px rgb(0, 158, 40);
+}
+#user_life {
+    text-shadow: 0px 0px 10px rgb(255, 0, 179);
+}
+#main_content {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#computer, #user {
+    font-size: 24px;
+    height: 100px;
+}
+
+#computer > *, #user > *{
+    margin: 18px 0 18px 0;
+}
+
+#computer_btns, #user_btns {
+    margin: 24px 0 24px 0;
+}
+
+#middle {
+    height: 100px;
+    margin: 30px 0 30px 0;
+}
+
+#middle .text {
+    font-size: 24px;
+    letter-spacing: 8px;
+    font-weight: 200;
+}
+
+#middle #round_winner {
+    font-size: 20px;
+    letter-spacing: 8px;
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+    font-weight: 900;
+}
+
+
+footer {
+    background-color: #3b3b3b;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    font-weight: 100;
+    padding: 2px;
+    font-size: 12px;
+}
+
+footer a {
+    text-decoration:underline;
+    font-size: medium;
+    font-weight: 900;
+    color:#ffffff;
+    font-size: 14px;
 }
